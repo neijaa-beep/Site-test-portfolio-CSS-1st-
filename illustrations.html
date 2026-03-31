@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes illustrations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="page-illust">
+    <header>
+        <h1> Mes Illustrations</h1>
+        <p>Voici quelques travaux réalisés sur Procreate et Clip Studio Paint EX !</p>
+    </header>
+
+    <div class="gallery">
+        <div class="gallery-item"><img src="darazoo.png" alt="Illu 1" onclick="openLightbox(this)"></div>
+        <div class="gallery-item"><img src="lake.jpeg" alt="Illu 2" onclick="openLightbox(this)"></div>
+        <div class="gallery-item"><img src="beylinda.jpeg" alt="Illu 3" onclick="openLightbox(this)"></div>
+        <div class="gallery-item"><img src="bako.jpeg" alt="Illu 4" onclick="openLightbox(this)"></div>
+        <div class="gallery-item"><img src="dancing.jpeg" alt="Illu 5" onclick="openLightbox(this)"></div>
+        <div class="gallery-item"><img src="ebandeli.jpeg" alt="Illu 6" onclick="openLightbox(this)"></div>
+    </div> <div id="lightbox" onclick="closeLightbox(event)">
+        <span class="lightbox-arrow" id="prev-btn" onclick="changeImage(-1, event)">&#10094;</span>
+        <img id="lightbox-img" src="" alt="Image agrandie">
+        <span class="lightbox-arrow" id="next-btn" onclick="changeImage(1, event)">&#10095;</span>
+    </div>
+
+    <script>
+       
+        const images = Array.from(document.querySelectorAll('.gallery-item img'));
+        let currentIndex = 0;
+
+        function openLightbox(clickedImg) {
+            currentIndex = images.indexOf(clickedImg);
+            updateLightboxImage();
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+
+        function closeLightbox(event) {
+            if (event.target.id === 'lightbox' || event.target.id === 'lightbox-img') {
+                document.getElementById('lightbox').style.display = 'none';
+            }
+        }
+
+        function changeImage(direction, event) {
+            event.stopPropagation(); 
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = images.length - 1;
+            else if (currentIndex >= images.length) currentIndex = 0;
+            updateLightboxImage();
+        }
+
+        function updateLightboxImage() {
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = images[currentIndex].src;
+        }
+    </script>
+</body>
