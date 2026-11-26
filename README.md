@@ -1,2 +1,1 @@
-# portfilio_test-BUTMMI
-Un site codé en HTML et CSS pour montrer mes compétences en HTML et CSS 
+Un petit prototype de site codé en environ 2 semaines en m'instruisant sur le HTML et le CSS sur le web.
